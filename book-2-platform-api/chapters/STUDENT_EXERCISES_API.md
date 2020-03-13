@@ -1,84 +1,102 @@
-# Student Exercises Controllers
+# Dog Walker Controllers
 
-Your task is to continue to build out the Student Exercises API.
+Your task is to start building out a Web API for your Dog Walker application.
 
-1. Copy remaining models from your CLI application to `Models` directory of your API project.
-1. Create Student controller. Student JSON representation should include cohort.
-    ```json
-    {
-        "id": 1,
-        "firstName": "Jane",
-        "lastName": "Doe",
-        "slackHandle": "@jane",
-        "cohortId": 1,
-        "cohort": {
-            "id": 1,
-            "name": "Cohort 28",
-            "students": [],
-            "instructors": []
-        },
-        "exercises": []
-    }
-    ```
-1. Create Instructor controller. Instructor JSON representation should include cohort.
-    ```json
-    {
-        "id": 1,
-        "firstName": "Jisie",
-        "lastName": "David",
-        "slackHandle": "@jisie",
-        "cohortId": 2,
-        "cohort": {
-            "id": 2,
-            "name": "Cohort 29",
-            "students": [],
-            "instructors": []
-        }
-    },
-    ```
-1. Create Cohort controller. Cohort JSON representation should include an array of students, and an array of instructors.
-    ```json
-    {
-        "name": "Cohort 29",
-        "Students": [
-            {
-                "id": 4,
-                "firstName": "Daniel",
-                "lastName": "Brewer",
-                "slackHandle": "@dan",
-                "cohortId": 2,
-                "cohort": null,
-                "exercises": []
-            },
-            {
-                "id": 5,
-                "firstName": "JD",
-                "lastName": "Wheeler",
-                "slackHandle": "@jd",
-                "cohortId": 2,
-                "cohort": null,
-                "exercises": []
-            }
-        ],
-        "Instructor": [
-            {
-                "id": 1,
-                "firstName": "Jisie",
-                "lastName": "David",
-                "slackHandle": "@jisie",
-                "cohortId": 2,
-                "cohort": null
-            },
-            {
-                "id": 2,
-                "firstName": "Andy",
-                "lastName": "Collins",
-                "slackHandle": "@andy",
-                "cohortId": 2,
-                "cohort": null
-            }
-        ]
-    }
-    ```
+1. Create a new Web API project in Visual Studio.
+1. Create a `Models` folder and copy models from your Dog Walker console application to `Models` directory of your API project.
+1. Create a Walker controller. Walker JSON representation should include Neighborhood. It does not need to include any other related entities such as Walks. The controller should support Get All, Get By Id, Create, Update, and Delete
 
+   ```json
+   {
+     "id": 1,
+     "name": "Jane Joe",
+     "neighborhoodId": 2,
+     "neighborhood": {
+       "id": 2,
+       "name": "Antioch"
+     },
+     "walks": null
+   }
+   ```
 
+1. Create a Dog controller. Dog JSON representation should include Owner. The controller should support Get All, Get By Id, Create, Update, and Delete
+   ```json
+   {
+       "id": 1,
+       "name": "Delta",
+       "breed": "Golden Retreiver",
+       "ownerId": 1,
+       "owner": {
+           "id": 1,
+           "name": "John Smith",
+           "neighborhoodId": 3,
+           "neighborhood": null
+       },
+       "notes": "Bring extra bags... She goes... a lot"
+   },
+   ```
+1. Create an Owner controller. When making a GET request for a single owner by Id, the Owner JSON representation should include an array of Dogs they own, and their Neighborhood. When making a GET request for all owners, the JSON representation does not have to included any related entities. The controller should support Get All, Get By Id, Create, and Update (Note: Not Delete)
+
+   **GET all**
+
+   ```json
+   [
+       {
+           "id": 1,
+           "name": "John Smith",
+           "address": "301 Plus Park Blvd, Nashville TN",\
+           "neighborhoodId": 3,
+           "neighborhood": null,
+           "dogs": null
+       },
+       {
+           "id": 2,
+           "name": "Jessie Doe",
+           "address": "500 Interstate Blvd S, Nashville TN",\
+           "neighborhoodId": 5,
+           "neighborhood": null,
+           "dogs": null
+       },
+       {
+           "id": 2,
+           "name": "Rick James",
+           "address": "505 Deaderick Street, Nashville TN",\
+           "neighborhoodId": 9,
+           "neighborhood": null,
+           "dogs": null
+       }
+   ]
+   ```
+
+   **GET by Id**
+
+   ```json
+   {
+     "id": 1,
+     "name": "John Smith",
+     "address": "301 Plus Park Blvd, Nashville TN",\
+     "neighborhoodId": 3,
+     "neighborhood": {
+       "id": 3,
+       "name": "Germantown"
+     },
+     "dogs": [
+       {
+         "id": 1,
+         "name": "Delta",
+         "breed": "Golden Retreiver",
+         "notes": "Bring extra bags... She goes a lot",
+         "ownerId": 1,
+         "owner": null
+       },
+       {
+         "id": 8,
+         "name": "Janet",
+         "breed": "Hound",
+         "notes": "She'll try to chase cars",
+         "ownerId": 1,
+         "owner": null
+       }
+     ]
+   }
+   ```
