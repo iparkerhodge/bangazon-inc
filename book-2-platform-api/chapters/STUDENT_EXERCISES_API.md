@@ -41,30 +41,30 @@ Your task is to start building out a Web API for your Dog Walker application.
 
    ```json
    [
-       {
-           "id": 1,
-           "name": "John Smith",
-           "address": "301 Plus Park Blvd, Nashville TN",\
-           "neighborhoodId": 3,
-           "neighborhood": null,
-           "dogs": null
-       },
-       {
-           "id": 2,
-           "name": "Jessie Doe",
-           "address": "500 Interstate Blvd S, Nashville TN",\
-           "neighborhoodId": 5,
-           "neighborhood": null,
-           "dogs": null
-       },
-       {
-           "id": 2,
-           "name": "Rick James",
-           "address": "505 Deaderick Street, Nashville TN",\
-           "neighborhoodId": 9,
-           "neighborhood": null,
-           "dogs": null
-       }
+     {
+       "id": 1,
+       "name": "John Smith",
+       "address": "301 Plus Park Blvd, Nashville TN",
+       "neighborhoodId": 3,
+       "neighborhood": null,
+       "dogs": null
+     },
+     {
+       "id": 2,
+       "name": "Jessie Doe",
+       "address": "500 Interstate Blvd S, Nashville TN",
+       "neighborhoodId": 5,
+       "neighborhood": null,
+       "dogs": null
+     },
+     {
+       "id": 2,
+       "name": "Rick James",
+       "address": "505 Deaderick Street, Nashville TN",
+       "neighborhoodId": 9,
+       "neighborhood": null,
+       "dogs": null
+     }
    ]
    ```
 
