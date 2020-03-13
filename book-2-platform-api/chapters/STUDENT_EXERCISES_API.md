@@ -74,7 +74,7 @@ Your task is to start building out a Web API for your Dog Walker application.
    {
      "id": 1,
      "name": "John Smith",
-     "address": "301 Plus Park Blvd, Nashville TN",\
+     "address": "301 Plus Park Blvd, Nashville TN",
      "neighborhoodId": 3,
      "neighborhood": {
        "id": 3,
