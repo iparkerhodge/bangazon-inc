@@ -2,12 +2,15 @@
 
 ## Practice
 
-1. Student JSON response should have all exercises that are assigned to them if the `include=exercise` query string parameter is there.
-1. Exercise JSON response should have all currently assigned students if the `include=students` query string parameter is there.
-1. Provide support for each resource (Instructor, Student, Cohort, Exercise) and the `q` query string parameter. If it is provided, your SQL should search relevant property for a match, search all properties of the resource for a match.
-    1. `FirstName`, `LastName`, and `SlackHandle` for instructors and students.
-    1. `Name` and `Language` for exercises.
-    1. `Name` for cohorts.
+1. When getting a Walker by their Id, the JSON response should have all walks that have been made by that walker if the `include=walks` query string parameter is there. i.e. `/api/walkers/1?include=walks`
+1. All Owner JSON responses should have Neighborhood information include if the `include=neighborhood` query string parameter is there.
+1. Provide support for filtering Walkers and Dogs by Neighboorhood by accepting a `neighborhoodId` query string parameter. Example:
 
+   ```
+   /api/walkers?neighborhoodId=1
+   /api/dogs?neighborhoodId=5
+   ```
+
+1. Provide support for searching Owners by name by accepting an optional `q` query string parameter. This should implement a partial search i.e searching "ohn" should include "John Doe"
 
 > **Hint:** Use [LIKE](https://www.techonthenet.com/sql_server/like.php) in the SQL query for pattern matching.
