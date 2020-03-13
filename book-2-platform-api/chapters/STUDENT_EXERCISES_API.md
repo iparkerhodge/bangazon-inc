@@ -4,17 +4,14 @@ Your task is to start building out a Web API for your Dog Walker application.
 
 1. Create a new Web API project in Visual Studio.
 1. Create a `Models` folder and copy models from your Dog Walker console application to `Models` directory of your API project.
-1. Create a Walker controller. Walker JSON representation should include Neighborhood. It does not need to include any other related entities such as Walks. The controller should support Get All, Get By Id, Create, Update, and Delete
+1. Create a Walker controller. Walker JSON does not need to include any other related entities such as Walks or Neighborhood. The controller should support Get All, Get By Id, Create, Update, and Delete
 
    ```json
    {
      "id": 1,
      "name": "Jane Joe",
      "neighborhoodId": 2,
-     "neighborhood": {
-       "id": 2,
-       "name": "Antioch"
-     },
+     "neighborhood": null,
      "walks": null
    }
    ```
