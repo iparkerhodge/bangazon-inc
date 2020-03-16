@@ -4,20 +4,20 @@
 
 1. Create a new "**Console App (.NET Core)**" project.
 1. Add the `System.Data.SqlClient` nuget package to your project.
-1. Create a `Repository` class to interact with the `StudentExercises` database you created in Student Exercises Part 4.
+1. Create a `Repository` class to interact with the `DogWalker` database you created in Student Exercises Part 4.
 1. Write the necessary C# code in `Repository.cs` and `Program.cs` to perform the following actions. Make sure to print results of each action to the console.
-    1. Query the database for all the Exercises.
-    1. Find all the exercises in the database where the language is JavaScript.
-    1. Insert a new exercise into the database.
-    1. Find all instructors in the database. Include each instructor's cohort.
-    1. Insert a new instructor into the database. Assign the instructor to an existing cohort.
-    1. Assign an existing exercise to an existing student.
+    1. Query the database for all the Walkers.
+    1. Find all the dog walkers in the database who work in the Inglewood neighborhood.
+    1. Insert a new dog walker into the database.
+    1. Find all owners in the database. Include each owner's neighborhood.
+    1. Insert a new owner into the database. Assign the instructor to an existing neighborhood.
+    1. Assign an existing walker to an existing neighborhood
 
 ## Challenges
 
 1. Add the following to your program:
-    1. Find all the students in the database. Include each student's cohort AND each student's list of exercises.
-    1. Write a method in the `Repository` class that accepts an `Exercise` and a `Cohort` and assigns that exercise to each student in the cohort IF and ONLY IF the student has not already been assigned the exercise.
+    1. Find all the dog owners in the database. Include each owner's neighborhood AND each owner's list of dogs.
+    1. Write a method in the `Repository` class that accepts four arguments:  a `Walker`, an `Owner`, a `Date` and a `Duration`. The walker will walk each dog belonging to the owner ONLY if the dog has not been walked that day.
 
 ## Advanced Challenge
 
@@ -71,17 +71,18 @@
     }
     ```
      Create menu options to allow the user to perform the following tasks:
-    1. Display all students.
-    1. Display all instructors.
-    1. Display all exercises.
-    1. Display all cohorts.
-    1. Search students by last name.
-    1. Create a new cohort.
-    1. Create a new student and assign them to an existing cohort.
-    1. Create a new instructor and assign them to an existing cohort.
-    1. Display all students in a given cohort.
-    1. Move an existing student to another existing cohort.
-    1. List the exercises for a given student.
-    1. Assign an existing exercise to an existing student.
+    1. Display all dogs.
+    1. Display all walkers.
+    1. Display all neighborhoods.
+    1. Display all walks.
+    1. Display all owners.
+    1. Search for walkers who live in a neighborhood.
+    1. Create a new owner.
+    1. Create a new dog and assign them to an existing owner.
+    1. Create a new walk for a given dog and walker.
+    1. Display all dogs in a given walk.
+    1. Move an existing dog to another existing owner.
+    1. List the walks for a given dog.
+ 
 
 >**NOTE**: C#'s [switch statement](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/switch) may simplify your menu code.
