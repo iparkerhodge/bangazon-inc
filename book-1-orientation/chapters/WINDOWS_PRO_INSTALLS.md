@@ -15,4 +15,4 @@
    >
    > - ASP.NET and web development
    > - .NET Core cross-platform development
-1. [Node](https://nodejs.org/en/download/) - Install the 64bit windows installer for the LTS version
+1. [Node](https://nodejs.org/en/download/) - Install via the 64bit windows installer for the LTS version
