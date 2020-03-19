@@ -11,13 +11,13 @@ You will use `CREATE TABLE` statements and `INSERT` statements to create all the
 ## Setup
 
 ### Create a new Database
-
+1. Come up with an awesome name for your dog walking app
 1. Open Visual Studio
 1. Open the SQL Server Object Explorer
 1. Right-click the `Databases` node beneath your SQLEXPRESS SQL Server Instance. Select `Add New Database`.
-1. Name the database `DogWalker`.
+1. Name the database whatever your app will be called i.e. `LordsOfDogtown`.
 1. Right-click the new database and select `New Query...`.
-1. Click `File` -> `Save SQLQuery1.sql`. Navigate to an approprate directory save the file as `DogWalker.sql`.
+1. Click `File` -> `Save SQLQuery1.sql`. Navigate to an approprate directory save the file as `NameOfYourApp.sql`.
 
 ### Creating The Database
 
