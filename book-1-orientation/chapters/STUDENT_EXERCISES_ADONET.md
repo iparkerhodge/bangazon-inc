@@ -10,7 +10,7 @@
    1. Find all the dog walkers in the database who work in the Inglewood neighborhood.
    1. Insert a new dog walker into the database.
    1. Find all owners in the database. Include each owner's neighborhood.
-   1. Insert a new owner into the database. Assign the instructor to an existing neighborhood.
+   1. Insert a new owner into the database. Assign the owner to an existing neighborhood.
    1. Assign an existing walker to an existing neighborhood
 
 ## Challenges
