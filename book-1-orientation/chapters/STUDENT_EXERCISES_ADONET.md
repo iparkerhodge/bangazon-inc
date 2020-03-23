@@ -1,4 +1,4 @@
-# Exploring Student Exercises in the database using <span>ADO</span>.NET
+# Exploring Dog Walker in the database using <span>ADO</span>.NET
 
 ## Instructions
 
