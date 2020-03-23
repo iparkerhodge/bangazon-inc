@@ -3,9 +3,10 @@
 ## Instructions
 
 1. Create a new "**Console App (.NET Core)**" project.
-1. Add the `System.Data.SqlClient` nuget package to your project.
-1. Create a `Repository` class to interact with the `DogWalker` database you created in Dog Walker Part I.
-1. Write the necessary C# code in `Repository.cs` and `Program.cs` to perform the following actions. Make sure to print results of each action to the console.
+1. Add the `Microsoft.Data.SqlClient` nuget package to your project.
+1. Create a Models folder and create a model class for each table in the DogWalker database you created in Dog Walker Part I
+1. Create a Data folder and add a repository class for each of the models: i.e. `WalkerRepository.cs`, `OwnerRepository.cs`, etc.
+1. Write the necessary C# code in the repositories and `Program.cs` to perform the following actions. Make sure to print results of each action to the console.
    1. Query the database for all the Walkers.
    1. Find all the dog walkers in the database who work in the Inglewood neighborhood.
    1. Insert a new dog walker into the database.
