@@ -1,4 +1,4 @@
-# Student Exercises - Using Query String Parameters
+# Dog Walker - Using Query String Parameters
 
 ## Practice
 
