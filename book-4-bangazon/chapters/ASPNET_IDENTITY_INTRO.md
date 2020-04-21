@@ -1,6 +1,6 @@
 # Identity Framework
 
-Identity Framework in .NET allows you to add authentication and user-related data to your ASP.NET  applications.
+Identity Framework in .NET allows you to add authentication and user-related data to your ASP.NET applications.
 
 ## Authentication and Authorization
 
@@ -24,10 +24,10 @@ Identity Framework provides a default `IdentityUser` class to represent the user
 
 For example, if we'd like to capture the following information about a user
 
-* First name
-* Last name
-* Street address
-* Products the user is selling
+- First name
+- Last name
+- Street address
+- Products the user is selling
 
 We would make new class like this
 
@@ -64,7 +64,7 @@ namespace YourApplicationNamespaceHere.Models
 Identity Framework works hand-in-hand with Entity framework. When we create a new Identity Framework project, VS even gives us an initial `ApplicationDbContext`, a migration and a connection string in `appSettings.json`. These scaffolded items are a good starting point, but we need to make a few changes.
 
 1. Delete the `Data/Migrations` folder. It was nice of VS to give us an initial migration, but that migration wasn't built with our custom `ApplicationUser` class.
-    > **NOTE:** Do NOT delete the `Data` folder, only the `Migration` folder inside of it.
+   > **NOTE:** Do NOT delete the `Data` folder, only the `Migration` folder inside of it.
 1. Update the connection string in your appsettings file to point to a new database in your local SQLExpress database server.
 1. Tell Identity and Entity about your custom `ApplicationUser` class by updating the `ApplicationDbContext` to inherit from `IdentityDbContext<ApplicationUser>`
 1. Add a `DbSet<ApplicationUser>` property to the `ApplicationDbContext` class.
@@ -91,9 +91,32 @@ namespace YourApplicationNamespaceHere.Data {
 Other than the initial migration you deleted in the previous section, there are three places (in two files) in the scaffolded application that refer to `IdentityUser`. We need to change each instance to `ApplicationUser`.
 
 1. **Startup.cs**
-    * In the `ConfigureServices()` method
-1. **Views/Shared/_LoginPartial.cshtml**
-    * On the second and third lines
+   - In the `ConfigureServices()` method
+1. **Views/Shared/\_LoginPartial.cshtml**
+   - On the second and third lines
+
+## Disable Account Confirmation
+
+By default, Identity has turned on a setting that requires users to confirm their email address. While this is generally a good idea, it doesn't give us an email service out the box. And since building an email service is outside the scope of this lesson, we'll just disable this setting for now.
+
+In `Startup.cs` in the `ConfigureServices` method, change `RequireConfirmedAccount` to be false.
+
+```csharp
+services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+```
+
+## Use Entity Framework to Create the Database
+
+Entity Framework can look at your models and create a SQL script for you that will create your database. To have Entity Framework do this, open up the Nuget Package Manager Console. You can access this in Visual Studio by going to Tools > Nuget Package Manager > Package Manager Console. Inside the package manager console, run the command `Add-Migration`.
+It will prompt you for a name for the migration. Give it the name "Initial".
+
+This will generate a file for you in your Migrations folder. The code in this file defines the tables and relationships for your database that Entity Framework has guessed based on your models. To create the database, run the following command in the package manager console
+
+```
+Update-Database
+```
+
+Your database is now created.
 
 ## Scaffolding User Management Pages
 
@@ -119,54 +142,55 @@ Click on the arrow next to the `Register.cshtml` file and you will see a related
 
 1. Open `Register.cshtml.cs`
 1. Update `InputModel` to include all of the properties of `ApplicationUser`.
-    ```cs
-    // Example
-    [Required]
-    [Display(Name = "First Name")]
-    public string FirstName { get; set; }
 
-    [Required]
-    [Display(Name = "Last Name")]
-    public string LastName { get; set; }
+   ```cs
+   // Example
+   [Required]
+   [Display(Name = "First Name")]
+   public string FirstName { get; set; }
 
-    [Required]
-    [Display(Name = "Street Address")]
-    public string StreetAddress { get; set; }
-    ```
+   [Required]
+   [Display(Name = "Last Name")]
+   public string LastName { get; set; }
+
+   [Required]
+   [Display(Name = "Street Address")]
+   public string StreetAddress { get; set; }
+   ```
+
 1. Update `OnPostAsync` so that the new instance of `ApplicationUser` has all of the properties being submitted in the form.
-    ```cs
-    // Example
-    var user = new ApplicationUser {
-        UserName = Input.Email,
-        FirstName = Input.FirstName,
-        LastName = Input.LastName,
-        StreetAddress = Input.StreetAddress,
-        Email = Input.Email
-    };
-    ```
+   ```cs
+   // Example
+   var user = new ApplicationUser {
+       UserName = Input.Email,
+       FirstName = Input.FirstName,
+       LastName = Input.LastName,
+       StreetAddress = Input.StreetAddress,
+       Email = Input.Email
+   };
+   ```
 1. Update `Register.cshtml` to include all of the HTML input fields for each of the properties on your `ApplicationUser`.
-    ```html
-    <div class="form-group">
-        <label asp-for="Input.FirstName"></label>
-        <input asp-for="Input.FirstName" class="form-control" />
-        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Input.LastName"></label>
-        <input asp-for="Input.LastName" class="form-control" />
-        <span asp-validation-for="Input.LastName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Input.StreetAddress"></label>
-        <input asp-for="Input.StreetAddress" class="form-control" />
-        <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
-    </div>
-    ```
+   ```html
+   <div class="form-group">
+     <label asp-for="Input.FirstName"></label>
+     <input asp-for="Input.FirstName" class="form-control" />
+     <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+   </div>
+   <div class="form-group">
+     <label asp-for="Input.LastName"></label>
+     <input asp-for="Input.LastName" class="form-control" />
+     <span asp-validation-for="Input.LastName" class="text-danger"></span>
+   </div>
+   <div class="form-group">
+     <label asp-for="Input.StreetAddress"></label>
+     <input asp-for="Input.StreetAddress" class="form-control" />
+     <span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
+   </div>
+   ```
 
 ### Additional User Management Pages
 
 There are many other Identity Razor Pages you can scaffold and change. Feel free to scaffold them and see what they do. You can always delete any pages you don't need and/or (re)scaffold pages. In particular you will want to update the Login page because the default page contains text that is meant to help you as a developer, but is inappropriate for a real login page.
-
 
 ## Accessing the Authenticated User
 
@@ -224,22 +248,20 @@ There are often times that you want to display certain information in a Razor te
 First, you need to inject the `UserManager` and the `SignInManager` tools into the Razor template. If you are using a custom user model, then you also need to include a `using` statement for the namespace of your models.
 
 ```html+razor
-@using Microsoft.AspNetCore.Identity
-@using YourApplicationNamespaceHere.Models;
-
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
+@using Microsoft.AspNetCore.Identity @using YourApplicationNamespaceHere.Models;
+@inject SignInManager<ApplicationUser>
+  SignInManager @inject UserManager<ApplicationUser>
+    UserManager</ApplicationUser
+  ></ApplicationUser
+>
 ```
 
 Now you can use those tools to determine if the user is authenticated, and get their information.
 
 ```html+razor
-@if (SignInManager.IsSignedIn(User))
-{
-    Hello @UserManager.GetUserAsync(User).Result.FirstName @UserManager.GetUserAsync(User).Result.LastName
-}
-else
-{
-    <a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+@if (SignInManager.IsSignedIn(User)) { Hello
+@UserManager.GetUserAsync(User).Result.FirstName
+@UserManager.GetUserAsync(User).Result.LastName } else {
+<a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
 }
 ```
